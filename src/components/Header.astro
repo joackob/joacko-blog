@@ -1,22 +1,24 @@
 ---
-import LinkNav from "./Links/LinkNavHeader.astro";
+import LinkedInIcon from "../components/icons/LinkedInIcon.astro";
+import GitHubIcon from "../components/icons/GitHubIcon.astro";
+import { SITE_BASE } from "../consts";
 ---
 
 <header>
   <nav class="flex justify-between items-center py-4">
-    <LinkNav href="/" img_src="/favicon-32x32.png" />
+    <a href={`${SITE_BASE}/`}>
+      <img src={`${SITE_BASE}/favicon-32x32.png`} alt="" />
+    </a>
     <ul class="flex space-x-6">
       <li>
-        <LinkNav
-          href="https://github.com/joackob"
-          img_src="/github-142-svgrepo-com.svg"
-        />
+        <a target="_blank" href="https://github.com/joackob">
+          <LinkedInIcon />
+        </a>
       </li>
       <li>
-        <LinkNav
-          href="https://www.linkedin.com/in/joaquinbf/"
-          img_src="/linkedin-round-svgrepo-com.svg"
-        />
+        <a target="_blank" href="https://www.linkedin.com/in/joaquinbf/">
+          <GitHubIcon />
+        </a>
       </li>
     </ul>
   </nav>

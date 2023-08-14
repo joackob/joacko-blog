@@ -1,9 +1,10 @@
 ---
+import { SITE_BASE } from "../../consts";
 export interface Props {
-    href: string;
+  href: string;
 }
 
 const { href } = Astro.props;
 ---
 
-<a href={href} class="text-lg"><slot /></a>
+<a href={`${SITE_BASE}${href}`} class="text-lg"><slot /></a>

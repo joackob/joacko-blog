@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import FormattedDate from "../../components/FormattedDate.astro";
 import Layout from "../../layouts/Page.astro";
+import { SITE_BASE } from "../../consts";
 
 const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -17,7 +18,7 @@ const posts = (await getCollection("blog")).sort(
             <FormattedDate date={post.data.pubDate} />
             <picture class="grid grid-cols-3 grid-flow-row">
               <figcaption class="col-span-3 md:col-span-2">
-                <a href={`/blog/${post.slug}`}>
+                <a href={`${SITE_BASE}/blog/${post.slug}`}>
                   <h1 class="font-bold text-3xl mb-4">{post.data.title}</h1>
                 </a>
 
