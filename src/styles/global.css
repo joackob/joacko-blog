@@ -56,7 +56,6 @@ article.article-md code {
   font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
   font-size: 0.875rem; /* 14px */
   line-height: 1.25rem; /* 20px */
-  padding: 0.25rem 0.5rem;
   border-radius: 0.25rem;
 }
 
@@ -87,7 +86,7 @@ article.article-md table th {
 }
 
 article.article-md pre {
-  padding: 1rem 0 1rem 0;
+  padding: 1rem;
   overflow-x: auto;
 }
 
