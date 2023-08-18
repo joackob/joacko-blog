@@ -20,8 +20,38 @@ El diseño esta inspirado en [Astro Pappers](https://astro.build/themes/details/
 
 ![Untitled](/joacko-blog/Primer%20desafi%CC%81o%20Blog%20con%20Astro%2023c744d45581401a9012bd6894a3ed6d/Untitled%201.png)
 
+Pequeña advertencia para  él que quiera aplicar estilos desde [TailwindCSS](https://tailwindcss.com/). No es sencillo aplicar los estilos a las paginas que se renderizan desde un archivo `.md`. En mi caso, aplique estilos desde una hoja `css` a sabiendas de los elementos que Astro genera y englobando los artículos en una etiqueta `article` con una clase particular. Por ejemplo:
+
+```html
+<article class="article-md">
+    <!-- Contendido del archivo md -->
+    <slot />
+</article>
+```
+
+```css
+article.article-md h1 {
+  font-size: 1.875rem; /* 30px */
+  line-height: 2.25rem; /* 36px */
+}
+```
+
 Todo venia a pedir de boca hasta que me tope con una sorpresa. Astro no renderiza formulas matemáticas basadas en [Latex](https://www.latex-project.org/).
 
 Luego de varias búsquedas en la web y muchas pruebas, pude dar con la solución en un pequeño [articulo](https://www.ileumas.com/writing/2022/03/astro-math-katex/) que proponía utilizar dos plugins: [remark-math](https://www.npmjs.com/package/remark-math) y [rehype-katex](https://www.npmjs.com/package/rehype-katex). Ambas herramientas se adaptaron perfectamente a mi proyecto por lo que no fueron necesarios grandes ajustes.
+
+```js
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+
+// https://astro.build/config
+export default defineConfig({
+  integrations: [mdx(), sitemap(), tailwind()],
+  markdown: {
+    remarkPlugins: [remarkMath],
+    rehypePlugins: [rehypeKatex],
+  },
+});
+```
 
 Tras algunos reparos que no vale la pena mencionar, finalmente pude publicar los [apuntes](https://joackob.github.io/fisica1q/) y su recepción fue excelente.
